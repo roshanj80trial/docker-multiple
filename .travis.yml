@@ -10,10 +10,10 @@ script:
   - docker run -e CI=true roshanj80/multi-client npm run test -- --coverage
 
 after_success:
-  - docker build roshanj80/multi-client ./client
-  - docker build roshanj80/multi-nginx ./nginx
-  - docker build roshanj80/multi-server ./server
-  - docker build roshanj80/multi-worker ./worker
+  - docker build -t roshanj80/multi-client ./client
+  - docker build -t roshanj80/multi-nginx ./nginx
+  - docker build -t roshanj80/multi-server ./server
+  - docker build -t roshanj80/multi-worker ./worker
 
   # Login to docker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
